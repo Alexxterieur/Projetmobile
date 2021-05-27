@@ -33,11 +33,11 @@ class PokemonFragment : Fragment() {
             layoutManager = this@PokemonFragment.layout
             adapter = this@PokemonFragment.adapterPokemon
         }
-        var pokemonList:ArrayList<String> = arrayListOf<String>().apply {
-            add("Pikachu")
-            add("bulbizarre")
-            add("ptiplouf")
-            add("dialga")
+        var pokemonList:ArrayList<Pokemon> = arrayListOf<Pokemon>().apply {
+            add(Pokemon("Pikachu"))
+            add(Pokemon("bulbizarre"))
+            add(Pokemon("ptiplouf"))
+            add(Pokemon("dialga"))
         }
         adapterPokemon.updateList(pokemonList)
     }
