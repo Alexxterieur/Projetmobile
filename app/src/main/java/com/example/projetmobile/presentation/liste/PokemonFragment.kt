@@ -1,0 +1,47 @@
+package com.example.projetmobile.presentation.liste
+
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.projetmobile.R
+
+/**
+ * A simple [Fragment] subclass as the default destination in the navigation.
+ */
+class PokemonFragment : Fragment() {
+
+    private lateinit var recyclerView: RecyclerView
+    private val adapter = pokemonAdapter(listOf<String>())
+    private var layoutManager = LinearLayoutManager(context)
+    override fun onCreateView(
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_pokemon, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        recyclerView = view.findViewById(R.id.pokemon_recycler)
+        recyclerView.apply {
+            layoutManager = this@PokemonFragment.layoutManager
+            adapter = this@PokemonFragment.adapter
+        }
+
+        val pokemonList:ArrayList<String> = arrayListOf<String>().apply {
+            add("Pikachu")
+            add("bulbizarre")
+            add("ptiplouf")
+            add("dialga")
+        }
+        adapter.updateList(pokemonList)
+    }
+}
