@@ -1,5 +1,5 @@
 package com.example.projetmobile.presentation.liste
 
-data class Pokemon (
+data class Anime (
         val name:String
 )
