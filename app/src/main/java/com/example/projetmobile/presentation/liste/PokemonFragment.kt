@@ -5,8 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projetmobile.R
@@ -17,8 +15,8 @@ import com.example.projetmobile.R
 class PokemonFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
-    private val adapter = pokemonAdapter(listOf<String>())
-    private var layoutManager = LinearLayoutManager(context)
+    private var adapterPokemon = PokemonAdapter(listOf())
+    private var layout = LinearLayoutManager(context)
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
@@ -32,16 +30,15 @@ class PokemonFragment : Fragment() {
 
         recyclerView = view.findViewById(R.id.pokemon_recycler)
         recyclerView.apply {
-            layoutManager = this@PokemonFragment.layoutManager
-            adapter = this@PokemonFragment.adapter
+            layoutManager = this@PokemonFragment.layout
+            adapter = this@PokemonFragment.adapterPokemon
         }
-
-        val pokemonList:ArrayList<String> = arrayListOf<String>().apply {
+        var pokemonList:ArrayList<String> = arrayListOf<String>().apply {
             add("Pikachu")
             add("bulbizarre")
             add("ptiplouf")
             add("dialga")
         }
-        adapter.updateList(pokemonList)
+        adapterPokemon.updateList(pokemonList)
     }
 }

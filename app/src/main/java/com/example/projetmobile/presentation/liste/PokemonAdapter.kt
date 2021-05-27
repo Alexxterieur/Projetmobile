@@ -7,8 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projetmobile.R
 
-class pokemonAdapter(private var dataSet: List<String>) :
-    RecyclerView.Adapter<pokemonAdapter.ViewHolder>() {
+class PokemonAdapter(private var dataSet: List<String>) :
+    RecyclerView.Adapter<PokemonAdapter.ViewHolder>() {
 
     /**
      * Provide a reference to the type of views that you are using
