@@ -9,7 +9,7 @@
         android:id="@+id/FirstFragment"
         android:name="com.example.projetmobile.presentation.liste.AnimeFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_anime">
+        tools:layout="@layout/fragment_pokeitem">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
