@@ -3,26 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/PokeItemFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
+        android:id="@+id/PokeItemFragment"
         android:name="com.example.projetmobile.presentation.liste.AnimeFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_pokeitem">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            android:id="@+id/navigateToPokeItemDetailsFragment"
             app:destination="@id/SecondFragment" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.example.projetmobile.SecondFragment"
+        android:name="com.example.projetmobile.presentation.details.PokeItemDetailsFragment"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/fragment_pokeitem_details">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/navigateToPokeItemFragment"
+            app:destination="@id/PokeItemFragment" />
     </fragment>
 </navigation>
