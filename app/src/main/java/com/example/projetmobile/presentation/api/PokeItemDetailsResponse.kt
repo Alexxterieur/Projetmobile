@@ -9,22 +9,22 @@ data class PokeItemDetailsResponse(
 )
 
 data class PokeItemText(
-    val language: LanguageUse,
+    val language_text: LanguageUse,
     val text: String
 )
 
 data class PokeItemEffects(
     val effect: String,
-    val language: LanguageUse
+    val language_eff: LanguageUse
 )
 
 data class LanguageUse(
-    val name:String,
+    val name_lang:String,
     val url: String
 )
 
 data class PokeItemAttribute(
-    val name: String,
+    val name_attribute: String,
     val url:String
 )
 

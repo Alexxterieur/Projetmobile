@@ -6,12 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import com.example.projetmobile.R
 import com.example.projetmobile.presentation.Singleton
 import com.example.projetmobile.presentation.api.PokeItemDetailsResponse
-import com.example.projetmobile.presentation.liste.PokeItemFragment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -53,7 +53,6 @@ class PokeItemDetailsFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<PokeItemDetailsResponse>, t: Throwable) {
-
             }
 
         })
