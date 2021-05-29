@@ -43,11 +43,27 @@ class PokeItemFragment : Fragment() {
             adapter = this@PokeItemFragment.adapterPokeItem
         }
 
-        Singleton.pokeItemApi.getPokeItem().enqueue(object: Callback<PokeItemResponse>{
-            override fun onResponse(call: Call<PokeItemResponse>, response: Response<PokeItemResponse>) {
-                if(response.isSuccessful && response.body() !=null){
-                    val PokeItemResponse: PokeItemResponse= response.body()!!
-                    adapterPokeItem.updateList(PokeItemResponse.results)
+        val list: List<PokeItem> = getListFromCache()
+        if(list.isEmpty()){
+            callApi()
+        }else{
+            showList(list)
+        }
+    }
+
+    private fun getListFromCache(): List<PokeItem> {
+        return emptyList()
+    }
+
+    private fun callApi() {
+        Singleton.pokeItemApi.getPokeItem().enqueue(object : Callback<PokeItemResponse> {
+            override fun onResponse(
+                call: Call<PokeItemResponse>,
+                response: Response<PokeItemResponse>
+            ) {
+                if (response.isSuccessful && response.body() != null) {
+                    val pokeItemResponse: PokeItemResponse = response.body()!!
+                    showList(pokeItemResponse.results)
                 }
             }
 
@@ -55,14 +71,12 @@ class PokeItemFragment : Fragment() {
                 TODO("Not yet implemented")
             }
         })
-        /*val animeList:ArrayList<Anime> = arrayListOf<Anime>().apply {
-            add(Anime("Pikachu"))
-            add(Anime("bulbizarre"))
-            add(Anime("ptiplouf"))
-            add(Anime("dialga"))
-        }
-        adapterAnime.updateList(animeList)*/
     }
+
+    private fun showList(pokeItemResponse: List<PokeItem>) {
+        adapterPokeItem.updateList(pokeItemResponse)
+    }
+
     private fun OnClickedPokeItem(id:Int) {
         findNavController().navigate(R.id.navigateToPokeItemDetailsFragment, bundleOf("pokeitem_id" to id+1))
     }
