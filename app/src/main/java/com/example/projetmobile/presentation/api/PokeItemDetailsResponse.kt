@@ -4,7 +4,8 @@ data class PokeItemDetailsResponse(
     val name:String,
     val attributes: List<PokeItemAttribute>,
     val effect_entries: List<PokeItemEffects>,
-    val flavor_text_entries: List<PokeItemText>
+    val flavor_text_entries: List<PokeItemText>,
+    val sprites:String
 )
 
 data class PokeItemText(
