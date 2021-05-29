@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projetmobile.R
 
-class PokeItemAdapter(private var dataSet: List<PokeItem>, var listener: (()->Unit)? = null) : RecyclerView.Adapter<PokeItemAdapter.ViewHolder>() {
+class PokeItemAdapter(private var dataSet: List<PokeItem>, var listener: ((Int)->Unit)? = null) : RecyclerView.Adapter<PokeItemAdapter.ViewHolder>() {
 
     /**
      * Provide a reference to the type of views that you are using
@@ -43,7 +43,7 @@ class PokeItemAdapter(private var dataSet: List<PokeItem>, var listener: (()->Un
         val currentPokeItem: PokeItem =dataSet[position]
         viewHolder.textView.text = currentPokeItem.name
         viewHolder.itemView.setOnClickListener{
-            listener?.invoke()
+            listener?.invoke(position)
         }
     }
 

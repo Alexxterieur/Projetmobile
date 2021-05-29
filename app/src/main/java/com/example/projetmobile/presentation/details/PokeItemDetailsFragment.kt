@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.projetmobile.R
 import com.example.projetmobile.presentation.Singleton
 import com.example.projetmobile.presentation.api.PokeItemDetailsResponse
+import com.example.projetmobile.presentation.liste.PokeItemFragment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,7 +22,6 @@ import retrofit2.Response
 class PokeItemDetailsFragment : Fragment() {
 
     private lateinit var textViewName: TextView
-
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
@@ -33,18 +33,15 @@ class PokeItemDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         textViewName=view.findViewById(R.id.pokeitem_details_name)
-        var idcmpt: Int = 1
-        while (idcmpt<=20) {
-            makeApiCall(idcmpt)
-            idcmpt++
-        }
+        makeApiCall()
         view.findViewById<Button>(R.id.button_second).setOnClickListener {
             findNavController().navigate(R.id.navigateToPokeItemFragment)
         }
     }
 
-    private fun makeApiCall(idcmpt: Int) {
-        Singleton.pokeItemApi.getPokeItemDetails(idcmpt.toString()).enqueue(object : Callback<PokeItemDetailsResponse>{
+    private fun makeApiCall() {
+        val id = arguments?.getInt("pokeitem_id")?: -1
+        Singleton.pokeItemApi.getPokeItemDetails(id).enqueue(object : Callback<PokeItemDetailsResponse>{
             override fun onResponse(
                 call: Call<PokeItemDetailsResponse>,
                 response: Response<PokeItemDetailsResponse>

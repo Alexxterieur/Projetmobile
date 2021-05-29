@@ -10,5 +10,5 @@ interface PokeItemAPI {
     fun getPokeItem(): Call<PokeItemResponse>
 
     @GET("item/{id}")
-    fun getPokeItemDetails(@Path("id") id:String): Call<PokeItemDetailsResponse>
+    fun getPokeItemDetails(@Path("id") id:Int): Call<PokeItemDetailsResponse>
 }

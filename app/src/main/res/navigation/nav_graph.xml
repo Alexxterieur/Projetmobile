@@ -7,20 +7,23 @@
 
     <fragment
         android:id="@+id/PokeItemFragment"
-        android:name="com.example.projetmobile.presentation.liste.AnimeFragment"
+        android:name="com.example.projetmobile.presentation.liste.PokeItemFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_pokeitem">
 
         <action
             android:id="@+id/navigateToPokeItemDetailsFragment"
-            app:destination="@id/SecondFragment" />
+            app:destination="@id/PokeItemDetailsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
+        android:id="@+id/PokeItemDetailsFragment"
         android:name="com.example.projetmobile.presentation.details.PokeItemDetailsFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_pokeitem_details">
-
+        <argument
+            android:name="pokeitem_id"
+            app:argType="integer"
+            android:defaultValue="1" />
         <action
             android:id="@+id/navigateToPokeItemFragment"
             app:destination="@id/PokeItemFragment" />

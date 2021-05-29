@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,12 +20,10 @@ import retrofit2.Response
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class AnimeFragment : Fragment() {
+class PokeItemFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private var adapterPokeItem = PokeItemAdapter(listOf(), ::OnClickedPokeItem)
-
-
 
     private var layout = LinearLayoutManager(context)
     override fun onCreateView(
@@ -40,8 +39,8 @@ class AnimeFragment : Fragment() {
 
         recyclerView = view.findViewById(R.id.pokeitem_recycler)
         recyclerView.apply {
-            layoutManager = this@AnimeFragment.layout
-            adapter = this@AnimeFragment.adapterPokeItem
+            layoutManager = this@PokeItemFragment.layout
+            adapter = this@PokeItemFragment.adapterPokeItem
         }
 
         Singleton.pokeItemApi.getPokeItem().enqueue(object: Callback<PokeItemResponse>{
@@ -64,8 +63,8 @@ class AnimeFragment : Fragment() {
         }
         adapterAnime.updateList(animeList)*/
     }
-    private fun OnClickedPokeItem() {
-        findNavController().navigate(R.id.navigateToPokeItemDetailsFragment)
+    private fun OnClickedPokeItem(id:Int) {
+        findNavController().navigate(R.id.navigateToPokeItemDetailsFragment, bundleOf("pokeitem_id" to id))
     }
 }
 
