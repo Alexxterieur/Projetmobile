@@ -64,7 +64,7 @@ class PokeItemFragment : Fragment() {
         adapterAnime.updateList(animeList)*/
     }
     private fun OnClickedPokeItem(id:Int) {
-        findNavController().navigate(R.id.navigateToPokeItemDetailsFragment, bundleOf("pokeitem_id" to id))
+        findNavController().navigate(R.id.navigateToPokeItemDetailsFragment, bundleOf("pokeitem_id" to id+1))
     }
 }
 
